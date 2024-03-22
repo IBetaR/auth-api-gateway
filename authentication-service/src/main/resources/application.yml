@@ -1,0 +1,16 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: auth-service
+    cloud:
+      gateway:
+        discovery:
+          locator:
+            enabled: true
+
+jwt:
+  secret-key: e0ea87012f32efe468d569886f6f7629fa113129cbf6b63624277412b5513cec
+  expiration: 86400
+  issuer: https://ibetarsync.vercel.app/
