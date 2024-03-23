@@ -10,9 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableHystrix
 public class GatewayConfig {
-    @Autowired
-    private AuthenticationFilter filter;
-    //public GatewayConfig(AuthenticationFilter filter) { this.filter = filter; }
+    private final AuthenticationFilter filter;
+    public GatewayConfig(AuthenticationFilter filter) { this.filter = filter; }
 
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {

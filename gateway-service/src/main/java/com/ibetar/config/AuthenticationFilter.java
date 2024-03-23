@@ -1,7 +1,6 @@
 package com.ibetar.config;
 
 import com.ibetar.service.JWTUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -15,18 +14,15 @@ import reactor.core.publisher.Mono;
 @RefreshScope
 @Component
 public class AuthenticationFilter implements GatewayFilter {
-    @Autowired
-    private RouteValidator routeValidator;
-    @Autowired
-    private JWTUtil jwtUtil;
-
-//    public AuthenticationFilter(
-//            RouteValidator routeValidator,
-//            JWTUtil jwtUtil
-//    ) {
-//        this.routeValidator = routeValidator;
-//        this.jwtUtil = jwtUtil;
-//    }
+    private final RouteValidator routeValidator;
+    private final JWTUtil jwtUtil;
+    public AuthenticationFilter(
+            RouteValidator routeValidator,
+            JWTUtil jwtUtil
+    ) {
+        this.routeValidator = routeValidator;
+        this.jwtUtil = jwtUtil;
+    }
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {

@@ -40,7 +40,12 @@ public class AuthenticationService {
                 registeredUser.getRole(),
                 "REFRESH"
         );
-        return new AuthResponse(jwtToken, refreshToken);
+        LOGGER.info("Registration successful!");
+        return new AuthResponse(
+                registeredUser.getId(),
+                jwtToken,
+                refreshToken
+        );
     }
 
 }

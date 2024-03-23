@@ -25,14 +25,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody AuthRequest request) {
-        LOGGER.info("Register process successful");
-//        AuthResponse response = authenticationService.register(request);
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add(HttpHeaders.AUTHORIZATION, response.token());
-//        headers.add("Refresh-Token", response.refreshToken());
-//        return ResponseEntity.ok()
-//                .headers(headers)
-//                .body(response);
+        LOGGER.info("Register authentication service started...");
         return ResponseEntity.ok(authenticationService.register(request));
     }
 
