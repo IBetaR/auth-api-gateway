@@ -14,3 +14,22 @@ jwt:
   secret-key:
   expiration: 86400
   issuer: https://ibetarsync.vercel.app/
+
+# OpenAPI Configuration
+
+ibetar:
+  openapi:
+    dev-url: http://localhost:9001
+    prod-url: https://api.example.com
+    dev-description: Server URL in Development environment
+    prod-description: Server URL in Production environment
+    contact-email: ibetarsync@gmail.com
+    contact-name: Ilich Betancourt Rangel
+    contact-url: https://www.linkedin.com/in/ilichbetancourtr/
+    license-name: MIT License
+    license-url: https://choosealicense.com/licenses/mit/
+    api-title: Authentication service
+    api-version: 1.0
+    api-description: This API exposes endpoints to Authentication service.
+    terms-of-service: https://www.ibetar.com
+    api-summary: This API exposes endpoints to create and manage Authentication service instance.

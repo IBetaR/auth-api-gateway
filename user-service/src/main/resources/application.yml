@@ -11,3 +11,22 @@ eureka:
       defaultZOne: http://localhost:8761/eureka
     fetch-registry: true
     register-with-eureka: true
+
+# OpenAPI Configuration
+
+ibetar:
+  openapi:
+    dev-url: http://localhost:9002
+    prod-url: https://api.example.com
+    dev-description: Server URL in Development environment
+    prod-description: Server URL in Production environment
+    contact-email: ibetarsync@gmail.com
+    contact-name: Ilich Betancourt Rangel
+    contact-url: https://www.linkedin.com/in/ilichbetancourtr/
+    license-name: MIT License
+    license-url: https://choosealicense.com/licenses/mit/
+    api-title: User Service
+    api-version: 1.0
+    api-description: This API exposes endpoints to User service.
+    terms-of-service: https://www.ibetar.com
+    api-summary: This API exposes endpoints to create and manage User service app instance.
