@@ -11,6 +11,6 @@ spring:
             enabled: true
 
 jwt:
-  secret-key: e0ea87012f32efe4126testKey54gkp54gfh277412b5513cec
+  secret-key:
   expiration: 86400
   issuer: https://ibetarsync.vercel.app/
