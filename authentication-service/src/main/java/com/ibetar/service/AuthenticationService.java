@@ -2,6 +2,7 @@ package com.ibetar.service;
 
 import com.ibetar.entity.AuthRequest;
 import com.ibetar.entity.AuthResponse;
+import com.ibetar.entity.CustomerVO;
 import com.ibetar.entity.UserVO;
 import lombok.AllArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
@@ -20,6 +21,38 @@ public class AuthenticationService {
     private final JWTUtil jwtUtil;
     private final RestTemplate restTemplate;
     //private final WebClient webClient;
+
+//    public AuthResponse signup(AuthRequest request) {
+//        LOGGER.info("Customer Registration started");
+//        request.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
+//
+//        CustomerVO registeredUser = restTemplate.postForObject(
+//                "http://user-service/users",
+//                request,
+//                CustomerVO.class
+//        );
+//
+//        assert registeredUser != null;
+//        // TODO: Validate the user exist
+//        String jwtToken = jwtUtil.generateToken(
+//                registeredUser.getUuid(),
+//                registeredUser.getRole(),
+//                "ACCESS"
+//
+//        );
+//
+//        String refreshToken = jwtUtil.generateToken(
+//                registeredUser.getUuid(),
+//                registeredUser.getRole(),
+//                "REFRESH"
+//        );
+//        LOGGER.info("Registration successful!");
+//        return new AuthResponse(
+//                registeredUser.getUuid(),
+//                jwtToken,
+//                refreshToken
+//        );
+//    }
 
     public AuthResponse register(AuthRequest request) {
         LOGGER.info("Registration started");
