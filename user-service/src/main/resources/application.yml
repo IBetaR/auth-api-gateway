@@ -11,6 +11,9 @@ eureka:
       defaultZOne: http://localhost:8761/eureka
     fetch-registry: true
     register-with-eureka: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}:${instanceId:${random.value}}
 
 # OpenAPI Configuration
 

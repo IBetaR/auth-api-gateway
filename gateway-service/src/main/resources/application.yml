@@ -6,9 +6,32 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+#      routes:
+#        - id: ibetar
+#          uri: ibetar.com
+#        - id: myOtherRouting
+#          uri: localhost:9999
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
+
+  redis:
+    database: 0
+    host: localhost
+    port: 16379
+    password:
+    timeout: 60000
+
+eureka:
+  client:
+    service-url:
+      defaultZOne: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}:${instanceId:${random.value}}
 
 jwt:
   secret-key:
