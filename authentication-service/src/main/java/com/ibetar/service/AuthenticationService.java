@@ -9,6 +9,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 @Service
 @AllArgsConstructor
@@ -16,6 +19,7 @@ public class AuthenticationService {
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
     private final JWTUtil jwtUtil;
     private final RestTemplate restTemplate;
+    //private final WebClient webClient;
 
     public AuthResponse register(AuthRequest request) {
         LOGGER.info("Registration started");
@@ -48,4 +52,37 @@ public class AuthenticationService {
         );
     }
 
+    // TODO: Refactor to use WebClient
+//    public AuthResponse register(AuthRequest request) {
+//        LOGGER.info("Registration started");
+//        request.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
+//
+//        Mono<UserVO> registeredUserMono = webClient.post()
+//                .uri("http://user-service/users")
+//                .body(BodyInserters.fromValue(request))
+//                .retrieve()
+//                .bodyToMono(UserVO.class);
+//
+//        UserVO registeredUser = registeredUserMono.block();
+//
+//        assert registeredUser != null;
+//        // TODO: Validate the user exist
+//        String jwtToken = jwtUtil.generateToken(
+//                registeredUser.getId(),
+//                registeredUser.getRole(),
+//                "ACCESS"
+//        );
+//
+//        String refreshToken = jwtUtil.generateToken(
+//                registeredUser.getId(),
+//                registeredUser.getRole(),
+//                "REFRESH"
+//        );
+//        LOGGER.info("Registration successful!");
+//        return new AuthResponse(
+//                registeredUser.getId(),
+//                jwtToken,
+//                refreshToken
+//        );
+//    }
 }
