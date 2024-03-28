@@ -35,6 +35,11 @@ Filtering and Authentication: The system employs dedicated microservices for fil
 
 How to Use:
 
+# 1. Prepare your environment
+Set your jwt key as environment variable in Authentication and Gateway Services
+### jwt:
+### secret-key: <your secret key>
+
 Service Registration: Each microservice registers itself with the Eureka server upon startup.
 This allows other services to discover and communicate with it seamlessly.
 
@@ -60,4 +65,5 @@ Package: com.ibetar.controller
 Description: Endpoints for user authentication
 Endpoint: POST /auth/register
 Description: Register a new user
+
 Response: AuthResponse
