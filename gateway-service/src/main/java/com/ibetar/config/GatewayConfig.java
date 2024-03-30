@@ -27,6 +27,12 @@ public class GatewayConfig {
                                         .setDenyEmptyKey(false))
                                 .filter(filter))
                         .uri("lb://auth-service"))
+                .route("inventory-service", p -> p.path("/inventory/**")
+                        .filters(f -> f.requestRateLimiter(
+                                        config -> config.setRateLimiter(redisRateLimiter())
+                                                .setDenyEmptyKey(false))
+                                .filter(filter))
+                        .uri("lb://inventory-service"))
                 .build();
     }
 
