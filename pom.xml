@@ -21,7 +21,8 @@
         <module>authentication-service</module>
         <module>user-service</module>
 		<module>gateway-service</module>
-	</modules>
+        <module>inventory-service</module>
+    </modules>
 
 	<properties>
 		<java.version>20</java.version>
@@ -29,6 +30,5 @@
 		<maven.compiler.target>20</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
 
 </project>
