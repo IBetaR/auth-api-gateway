@@ -48,12 +48,11 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
-        <!--  Kafka Consumer -->
+        <!--  Kafka Streams binding capabilities of Spring Cloud Stream-->
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-binder-kafka-streams</artifactId>
         </dependency>
-
 
         <dependency>
             <groupId>org.projectlombok</groupId>

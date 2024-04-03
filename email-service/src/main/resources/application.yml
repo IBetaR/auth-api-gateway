@@ -4,6 +4,12 @@ server:
 spring:
   application:
     name: email-service
+  cloud:
+    stream:
+      bindings:
+        listenMessages-in-0.destination: mails
+      binder:
+        brokers: localhost:9092
 
 eureka:
   client:
@@ -15,5 +21,13 @@ eureka:
     hostname: localhost
     instance-id: ${spring.application.name}:${server.port}:${instanceId:${random.value}}
 
-Kafka:
-  bootstrapAddress: localhost:9092
+#Kafka:
+#  bootstrapAddress: localhost:9092
+
+#Kafka:
+#  consumer:
+#    bootstrap-servers: localhost:9092
+#    group-id: MyGroup
+#    auto-offset-reset: earliest
+#    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
