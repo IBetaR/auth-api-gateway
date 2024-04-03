@@ -15,6 +15,9 @@ eureka:
     hostname: localhost
     instance-id: ${spring.application.name}:${server.port}:${instanceId:${random.value}}
 
+Kafka:
+  bootstrapAddress: localhost:9092
+
 # OpenAPI Configuration
 
 ibetar:
