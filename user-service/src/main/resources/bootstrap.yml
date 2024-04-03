@@ -3,3 +3,6 @@ spring:
     config:
       enabled: true
       uri: http://localhost:9296
+    stream:
+      binder:
+        brokers: localhost:9092

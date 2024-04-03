@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: user-service
+  cloud:
+    stream:
+      binder:
+        brokers: localhost:9092
 
 eureka:
   client:
@@ -15,8 +19,8 @@ eureka:
     hostname: localhost
     instance-id: ${spring.application.name}:${server.port}:${instanceId:${random.value}}
 
-Kafka:
-  bootstrapAddress: localhost:9092
+#Kafka:
+#  bootstrapAddress: localhost:9092
 
 # OpenAPI Configuration
 
