@@ -1,6 +1,5 @@
 package com.ibetar.config;
 
-import io.netty.resolver.InetSocketAddressResolver;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.cloud.gateway.support.ipresolver.XForwardedRemoteAddressResolver;
 import org.springframework.context.annotation.Primary;

@@ -1,0 +1,55 @@
+server:
+  port: 9005
+
+spring:
+  application:
+    name: batch-service
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/file-manager
+    username: postgres
+    password: password
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: create-drop
+      show-sql: false
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false
+
+  cloud:
+    stream:
+      bindings:
+        listenBatchJobs-in-0.destination: jobs
+      binder:
+        brokers: localhost:9092
+
+eureka:
+  client:
+    service-url:
+      defaultZOne: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}:${instanceId:${random.value}}
+
+#Kafka:
+#  bootstrapAddress: localhost:9092
+
+#Kafka:
+#  consumer:
+#    bootstrap-servers: localhost:9092
+#    group-id: MyGroup
+#    auto-offset-reset: earliest
+#    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
