@@ -12,8 +12,8 @@ import java.security.Key;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
@@ -36,6 +36,15 @@ public class JWTUtil {
     private SecretKey getSigningKey() {
         byte[] decodedSecretKey = Base64.getDecoder().decode(secretKey);
         return Keys.hmacShaKeyFor(decodedSecretKey);
+    }
+
+    public String extractAuthenticatedUsername(String token) {
+        return extractClaim(token, Claims::getSubject);
+    }
+
+    public <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
+        final Claims claims = getClaims(token);
+        return claimResolver.apply(claims);
     }
 
     private Claims getClaims(String jwtToken) {

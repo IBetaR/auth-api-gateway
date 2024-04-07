@@ -1,0 +1,35 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: inventory-service
+
+eureka:
+  client:
+    service-url:
+      defaultZOne: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}:${instanceId:${random.value}}
+
+## OpenAPI Configuration
+#
+#ibetar:
+#  openapi:
+#    dev-url: http://localhost:9003
+#    prod-url: https://api.example.com
+#    dev-description: Server URL in Development environment
+#    prod-description: Server URL in Production environment
+#    contact-email: ibetarsync@gmail.com
+#    contact-name: Ilich Betancourt Rangel
+#    contact-url: https://www.linkedin.com/in/ilichbetancourtr/
+#    license-name: MIT License
+#    license-url: https://choosealicense.com/licenses/mit/
+#    api-title: User Service
+#    api-version: 1.0
+#    api-description: This API exposes endpoints to Inventory service.
+#    terms-of-service: https://www.ibetar.com
+#    api-summary: This API exposes endpoints to create and manage Inventory service app instance.
