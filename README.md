@@ -67,3 +67,5 @@ Endpoint: POST /auth/register
 Description: Register a new user
 
 Response: AuthResponse
+
+# Batch Service
