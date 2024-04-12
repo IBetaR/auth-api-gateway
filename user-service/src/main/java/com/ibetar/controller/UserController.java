@@ -21,7 +21,7 @@ public class UserController {
     @PostMapping
     @Operation(summary = "The user can register")
     public ResponseEntity<UserVO> register(@RequestBody UserVO user) {
-        LOGGER.info("Registering user with email: " + user.getEmail());
+        LOGGER.info("Registering user with email: {}", user.getEmail());
         emailService.sendUserWelcomeEmail(user);
         return ResponseEntity.ok(userService.register(user));
     }

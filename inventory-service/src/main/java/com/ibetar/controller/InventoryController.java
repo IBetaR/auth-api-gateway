@@ -17,7 +17,7 @@ public class InventoryController {
 
     @GetMapping("profile/{uuid}")
     public ResponseEntity<InventoryVO> getInventory(@PathVariable("uuid") String uuid) {
-        LOGGER.info("Retrieving profile's inventory with uuid: " + uuid);
+        LOGGER.info("Retrieving profile's inventory with uuid: {}", uuid);
         return ResponseEntity.ok(inventoryService.getInventory(uuid));
     }
 

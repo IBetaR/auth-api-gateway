@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: batch-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/batch-service
   datasource:
     platform: postgres
     driver-class-name: org.postgresql.Driver
