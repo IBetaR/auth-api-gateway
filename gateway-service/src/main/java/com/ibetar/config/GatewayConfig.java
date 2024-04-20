@@ -37,12 +37,22 @@ public class GatewayConfig {
                                                 .setDenyEmptyKey(false))
                                 .filter(filter))
                         .uri("lb://batch-service"))
+                .route("paypal-service", p -> p.path("/paypal-service/**")
+                        .filters(f -> f.requestRateLimiter(
+                                        config -> config.setRateLimiter(redisRateLimiter())
+                                                .setDenyEmptyKey(false))
+                                .filter(filter))
+                        .uri("lb://paypal-service"))
                 .build();
     }
 
     @Bean
     public RedisRateLimiter redisRateLimiter() {
-        return new RedisRateLimiter(1, 1, 1);
+        return new RedisRateLimiter(
+                1,
+                1,
+                1
+        );
     }
 
 }

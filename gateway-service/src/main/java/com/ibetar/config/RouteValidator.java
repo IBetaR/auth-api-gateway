@@ -9,7 +9,9 @@ import java.util.function.Predicate;
 @Service
 public class RouteValidator {
     public static final List<String> openEndpoints = List.of(
-            "/auth/register"
+            "/auth/register",
+            "/batch-service", // TODO: MOVE LATER, THIS IS OPEN FOR TEST ONLY
+            "/paypal-service"
     );
 
     public Predicate<ServerHttpRequest> isSecured =
