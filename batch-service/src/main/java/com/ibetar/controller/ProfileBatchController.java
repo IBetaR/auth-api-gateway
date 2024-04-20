@@ -1,6 +1,7 @@
 package com.ibetar.controller;
 
 import com.ibetar.entity.ProfileVO;
+import com.ibetar.service.ProfileVOService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -10,12 +11,12 @@ import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("profiles")
@@ -25,6 +26,7 @@ public class ProfileBatchController {
     private final JobLauncher jobLauncher;
     private final Job runProfileDataJob;
     private final FlatFileItemReader<ProfileVO> profileVOReader;
+    private final ProfileVOService service;
 
     @PostMapping("upload-csv")
     public ResponseEntity<String> importProfileToDatabaseJob(
@@ -58,5 +60,10 @@ public class ProfileBatchController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to import profiles CSV data to the database. Error: " + e.getMessage());
         }
+    }
+
+    @GetMapping
+    public Page<ProfileVO> getProfiles(@PageableDefault Pageable pageable) {
+        return service.getProfiles(pageable);
     }
 }
