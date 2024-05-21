@@ -1,0 +1,66 @@
+server:
+  port: 9009
+
+spring:
+  application:
+    name: notification-service
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/notification-service
+  cloud:
+    stream:
+      function:
+        definition: listenNotifications
+      bindings:
+        listenNotifications-in-0:
+          destination: notifications
+          group: notification-service-group
+      kafka:
+        binder:
+          brokers: localhost:9092
+#        bindings:
+#          listenNotifications-in-0:
+#            consumer:
+#              autoCommitOffset: true # Automatically commit offsets
+#              startOffset: earliest # Start from the earliest offset
+#              autoCommitInterval: 100 # Interval for auto-committing offsets (milliseconds)
+#              enableDlq: true     # Enable Dead Letter Queue in case of failures
+#
+#        streams:
+#          binder:
+#            configuration:
+#              default:
+#                key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+#                value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+#              commit.interval.ms: 100         # Commit interval for Kafka Streams
+#              auto.offset.reset: earliest     # Start from the earliest offset
+#              enable.auto.commit: true        # Enable auto-commit of offsets
+
+#  kafka:
+#    consumer:
+#      group-id: notification-service-group
+#      auto-offset-reset: earliest
+#      enable-auto-commit: true
+#      auto-commit-interval: 100
+#      properties:
+#        key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#        value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    listener:
+#      missing-topics-fatal: false
+  output:
+    ansi:
+      enabled: ALWAYS
+
+eureka:
+  client:
+    service-url:
+      defaultZOne: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}:${instanceId:${random.value}}
+
+logging:
+  level:
+    org.springframework.cloud.stream: DEBUG

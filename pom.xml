@@ -24,6 +24,9 @@
         <module>inventory-service</module>
         <module>email-service</module>
         <module>batch-service</module>
+        <module>aidata-processor-service</module>
+        <module>platform-service</module>
+        <module>notification-service</module>
     </modules>
 
 	<properties>

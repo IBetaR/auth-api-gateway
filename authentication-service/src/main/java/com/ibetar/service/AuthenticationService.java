@@ -69,7 +69,6 @@ public class AuthenticationService {
                 registeredUser.getId(),
                 registeredUser.getRole(),
                 "ACCESS"
-
                 );
 
         String refreshToken = jwtUtil.generateToken(
